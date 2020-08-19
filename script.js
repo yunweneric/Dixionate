@@ -2,54 +2,60 @@
 $(document).ready(function () {
     window.onload = function () {
         $('.preload').fadeOut(500, function () { $('.preload').hide(); });
+        // getNews();
+        // registerSW();
     }
 });
+
+
+// import './news-article.js';
+// import { topHeadlinesUrl } from './newsApi.js';
+
+// async function getNews() {
+//   const res = await fetch(topHeadlinesUrl);
+//   const json = await res.json();
+
+//   const main = document.querySelector('main');
+
+//   json.articles.forEach(article => {
+//     const el = document.createElement('news-article');
+//     el.article = article;
+//     main.appendChild(el);
+//   });
+// }
+
+// async function registerSW() {
+//   if ('serviceWorker' in navigator) {
+//     try {
+//       await navigator.serviceWorker.register('./sw.js');
+//     } catch (e) {
+//       console.log(`SW registration failed`);
+//     }
+//   }
+// }
+
+
+
+
+
+
+
+
+
+
 let username = document.querySelector("#findword").value.toLowerCase();
 
 //Function that gets data for json file
 function translate(data, key) {
 
     if (key in data) {
-        return data[key];
+        // return data[key];
+        return data.key;
     }
 
     else
         return document.getElementById("result").innerHTMl = ['Ooooooooopsss! Sorry the word you search was not found. Please check the word and try again!'];
 }
-
-
-// Finding closest match
-
-
-// $("#findword").focus(function (e) {
-//     // let username = document.querySelector("#findword").value.toLowerCase();
-
-//     // stringSimilarity.findBestMatch(username, [
-//     //     'For sale: green Subaru Impreza, 210,000 miles', 
-//     //     'For sale: table in very good condition, olive green in colour.', 
-//     //     'Wanted: mountain bike with at least 21 gears.'
-//     //   ]);
-
-//     console.log("hello world")
-//     console.log(username)
-//     // e.preventDefault();
-
-// });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //Search for word upon a click on the search bar
 $("#search").click(function (e) {
 
@@ -65,7 +71,7 @@ $("#search").click(function (e) {
     //Triggering ajax request
     $.ajax({
         // url: '/dictionary.json',
-        type: 'GET',
+        type: 'POST',
         datatype: 'json',
 
         beforeSend: function () {
