@@ -336,9 +336,16 @@ input {
   letter-spacing: 1px;
   margin: 0px auto auto auto;
 }
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
+    -webkit-text-fill-color: rgb(94, 35, 35) !important;
+}
 
 input:focus {
-  background-color: #03444400;
+  background-color: var(--clr-primary);
   outline: none;
 }
 
@@ -421,7 +428,7 @@ input[type="submit"]:hover {
     /* font-family: "Alegreya", "lato", "Muli", "B612", serif; */
     padding: 10px;
     width: 50%;
-    background-color: #03444400;
+    /* background-color: #03444400; */
     border: 1px solid var(--clr-light);
     border-radius: 5%;
     color: var(--clr-light);
@@ -479,7 +486,7 @@ input[type="submit"]:hover {
       font-family: "Alegreya", "lato", "Muli", "B612", serif;
       padding: 8px;
       width: 30%;
-      background-color: #03444400;
+      /* background-color: #03444400; */
       border: 1px solid var(--clr-light);
       border-radius: 5%;
       color: var(--clr-light);
