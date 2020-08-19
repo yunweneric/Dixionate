@@ -13,7 +13,7 @@ const assets = [
   '/script.js',
   'https://fonts.googleapis.com/css2?family=Alegreya&family=B612&family=Lato&family=Muli:ital@1&display=swap',
   '/img/icons/icon-96x96.png',
-  '/dictionary.json',
+  // '/dictionary.json',
   'https://fonts.gstatic.com/s/lato/v16/S6uyw4BMUTPHjx4wXiWtFCc.woff2'
 ];
 

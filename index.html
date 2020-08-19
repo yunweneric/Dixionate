@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="viewport"
         content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=320, height=device-height, target-densitydpi=medium-dpi">
-    <link rel="shortcut icon" href="stylesheets/illustrations/logo.png" type="image/x-icon">
+    <link rel="shortcut icon" href="/img/icons/icon-72x72.png" type="image/x-icon">
     <link rel="stylesheet" href="stylesheets/bootstrap-4/css/bootstrap.css" />
     <!-- css files -->
     <link rel="stylesheet" href="stylesheets/reset.css" />
@@ -15,7 +15,8 @@
     <!-- Fonts -->
     <link
         href="https://fonts.googleapis.com/css2?family=Alegreya&family=B612&family=Lato&family=Muli:ital@1&display=swap"
-        rel="stylesheet">
+        rel="stylesheet"><script src="/stylesheets/jquery/jquery.min.js"></script>
+        <script src="stylesheets/bootstrap-4/js/bootstrap.min.js"></script>
     <!-- <link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet"> -->
 
     <link rel="manifest" href="/manifest.json">
@@ -26,9 +27,7 @@
 </head>
 
 <body>
-
     <section class="containerorigin">
-
         <section class="preload">
             <div class="lds-roller">
                 <div></div>
@@ -43,7 +42,6 @@
         </section>
         <!-- HEADER GOES HERE! -->
         <header>
-
             </nav>
             <div class="hero">
             </div>
@@ -54,29 +52,19 @@
                         Hi genius! I am dixionate, I can define any word for you
                     </p>
                     <div class="hero-logo">
-
                         <img src="stylesheets/illustrations/logo.png" alt="">
-
                     </div>
                 </div>
-
-
-
             </div>
-
-
         </header>
         <section class="firstcontainer">
             <div class="search">
                 <form action="/app.html" method="post" id="form1">
                     <input type="text" name="username" id="findword" placeholder="E.g: genius" required>
                     <input type="submit" value="Search!" id="search">
-
                 </form>
                 <div id="result"></div>
-
             </div>
-
         </section>
         <!-- <section class="foot"> -->
         <footer id="footer">
@@ -84,13 +72,12 @@
         </footer>
         <!-- </section> -->
     </section>
-
     <!-- Scripts -->
     <!-- <script src="//unpkg.com/string-similarity@4.0.1/umd/string-similarity.min.js"></script> -->
     <script src="/stylesheets/jquery/jquery.min.js"></script>
     <script src="stylesheets/bootstrap-4/js/bootstrap.min.js"></script>
 
-    <!-- <script src="/sw.js"></script> -->
+    <script src="/sw.js"></script>
     <script src="/app.js"></script>
     <script src="script.js"></script>
 </body>

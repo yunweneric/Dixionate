@@ -3,75 +3,30 @@ $(document).ready(function () {
     window.onload = function () {
         $('.preload').fadeOut(500, function () { $('.preload').hide(); });
         // getNews();
-        // registerSW();
+        // alert("hello")
     }
 });
 
-
-// import './news-article.js';
-// import { topHeadlinesUrl } from './newsApi.js';
-
-// async function getNews() {
-//   const res = await fetch(topHeadlinesUrl);
-//   const json = await res.json();
-
-//   const main = document.querySelector('main');
-
-//   json.articles.forEach(article => {
-//     const el = document.createElement('news-article');
-//     el.article = article;
-//     main.appendChild(el);
-//   });
-// }
-
-// async function registerSW() {
-//   if ('serviceWorker' in navigator) {
-//     try {
-//       await navigator.serviceWorker.register('./sw.js');
-//     } catch (e) {
-//       console.log(`SW registration failed`);
-//     }
-//   }
-// }
-
-
-
-
-
-
-
-
-
-
-let username = document.querySelector("#findword").value.toLowerCase();
+// let username = document.querySelector("#findword").value.toLowerCase();
 
 //Function that gets data for json file
 function translate(data, key) {
-
     if (key in data) {
-        // return data[key];
-        return data.key;
+        return data[key];
+        // return data.key;
+        // console.log("hi");
     }
-
     else
         return document.getElementById("result").innerHTMl = ['Ooooooooopsss! Sorry the word you search was not found. Please check the word and try again!'];
 }
 //Search for word upon a click on the search bar
 $("#search").click(function (e) {
-
-
-
     let username = document.querySelector("#findword").value.toLowerCase();
-    // console.log(typeof(username))
-
-
-
-
-
+    console.log(typeof(username))
     //Triggering ajax request
     $.ajax({
-        // url: '/dictionary.json',
-        type: 'POST',
+        // url: 'dictionary.json',
+        type: 'GET',
         datatype: 'json',
 
         beforeSend: function () {
@@ -90,8 +45,8 @@ $("#search").click(function (e) {
                     'dataType': "json",
                     'success': function (data) {
                         json = data;
-                        // console.log(json)
-                        // console.log(username)
+                        console.log(json)
+                        console.log(username)
                         let resultat = translate(json, username);
                         resulthtml = document.getElementById("result").style;
                         resulthtml.padding = "30px";
@@ -116,9 +71,6 @@ $('#findword').click(function (e) {
     $('#footer').css("display", "inline").fadeOut(500)
     e.preventDefault();
 });
-
-
-
 
 
 // ======================================================================================
