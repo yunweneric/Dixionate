@@ -286,7 +286,16 @@ header p {
 /* ============================================================================= */
 /* SEARCH SECTION */
 /* ============================================================================= */
-
+/* select{
+  width: 100%;
+  background:none;
+  border: none;
+}
+option{
+  background:#000;
+  border: none;
+  padding: 20px; 
+}*/
 
 .containerorigin{
   /* display: none; */
@@ -299,7 +308,11 @@ header p {
   height: 30vh;
   /* overflow: hidden; */
 }
-
+#suggest{
+  text-align: center;
+  color: #fff;
+  display: block;
+}
 .search {
 
   margin-top: 20px;

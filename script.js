@@ -2,8 +2,7 @@
 $(document).ready(function () {
     window.onload = function () {
         $('.preload').fadeOut(500, function () { $('.preload').hide(); });
-        // getNews();
-        // alert("hello")
+
     }
 });
 
@@ -11,21 +10,60 @@ $(document).ready(function () {
 
 //Function that gets data for json file
 function translate(data, key) {
+
     if (key in data) {
         return data[key];
-        // return data.key;
-        // console.log("hi");
     }
     else
         return document.getElementById("result").innerHTMl = ['Ooooooooopsss! Sorry the word you search was not found. Please check the word and try again!'];
 }
+
+// finding close match
+const search = document.getElementById("findword");
+const matchlist = document.getElementById("suggest");
+const searchmatches = async searchtext => {
+    const res = await fetch("/dictionary.json");
+    let words = await res.json();
+    let allkeys = Object.keys(words)
+    let matches = allkeys.filter(word => {
+        const regex = new RegExp(`^${searchtext}`, "gi");
+        return word.match(regex);
+    });
+
+    matches.forEach(element => {
+        element = element.toLowerCase()
+        return element
+    })
+    let foundmatch = matches.sort().slice(1, 5);
+    // console.log(foundmatch)
+    if (searchtext.length === 0) {
+        foundmatch = [];
+    }
+    outputhtml(foundmatch)
+};
+const outputhtml = foundmatch => {
+    if (foundmatch.length > 0) {
+        const html = foundmatch.map(match =>
+            `<option style = "display:none">${match}</option>`
+        ).join("");
+        matchlist.innerHTML = html
+        // console.log(html);
+
+    }
+}
+search.addEventListener('input', () => {
+    searchmatches(search.value)
+    // console.log("ji")
+})
+
+
 //Search for word upon a click on the search bar
 $("#search").click(function (e) {
     let username = document.querySelector("#findword").value.toLowerCase();
-    console.log(typeof(username))
+    // console.log(typeof(username))
     //Triggering ajax request
     $.ajax({
-        // url: 'dictionary.json',
+        url: 'dictionary.json',
         type: 'GET',
         datatype: 'json',
 
@@ -44,9 +82,15 @@ $("#search").click(function (e) {
                     'url': '/dictionary.json',
                     'dataType': "json",
                     'success': function (data) {
+                        let username = document.querySelector("#findword").value.toLowerCase();
                         json = data;
-                        console.log(json)
-                        console.log(username)
+                        // console.log(data)
+                        // console.log(username)
+                        // let serilized = JSON.stringify(data);
+                        // console.log(serilized)
+                        // let localdata = localStorage.setItem("myobj", serilized);
+                        // console.log(localStorage);
+                        // console.log("nothing")
                         let resultat = translate(json, username);
                         resulthtml = document.getElementById("result").style;
                         resulthtml.padding = "30px";
