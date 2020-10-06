@@ -1,5 +1,4 @@
-const staticCacheName = 'site-static-v1';
-const dynamicCacheName = 'site-dynamic-v3';
+const staticCacheName = 'site-static-v2';
 const assets = [
   '/',
   '/index.html',
@@ -16,17 +15,6 @@ const assets = [
   '/dictionary.json',
   'https://fonts.gstatic.com/s/lato/v16/S6uyw4BMUTPHjx4wXiWtFCc.woff2'
 ];
-
-// cache size limit function
-const limitCacheSize = (name, size) => {
-  caches.open(name).then(cache => {
-    cache.keys().then(keys => {
-      if (keys.length > size) {
-        cache.delete(keys[0]).then(limitCacheSize(name, size));
-      }
-    });
-  });
-};
 
 // install event
 self.addEventListener('install', evt => {
@@ -46,39 +34,19 @@ self.addEventListener('activate', evt => {
     caches.keys().then(keys => {
       //console.log(keys);
       return Promise.all(keys
-        .filter(key => key !== staticCacheName && key !== dynamicCacheName)
+        .filter(key => key !== staticCacheName)
         .map(key => caches.delete(key))
       );
     })
   );
 });
 
-// fetch events
+// fetch event
 self.addEventListener('fetch', evt => {
-  //   if (evt.request.url.indexOf('firestore.googleapis.com') === -1) {
-  //     evt.respondWith(
-  //       caches.match(evt.request).then(cacheRes => {
-  //         return cacheRes || fetch(evt.request).then(fetchRes => {
-  //           return caches.open(dynamicCacheName).then(cache => {
-  //             cache.put(evt.request.url, fetchRes.clone());
-  //             // check cached items size
-  //             limitCacheSize(dynamicCacheName, 15);
-  //             return fetchRes;
-  //           })
-  //         });
-  //       })
-  //         .catch(() => {
-  //           if (evt.request.url.indexOf('.html') > -1) {
-  //             return caches.match('/pages/fallback.html');
-  //           }
-  //         })
-  //     );
-  //   }
-  // });
+  console.log('fetch event', evt);
   evt.respondWith(
     caches.match(evt.request).then(cacheRes => {
-      return cacheRes || fetch(evt.request)
+      return cacheRes || fetch(evt.request);
     })
-  )
+  );
 });
-//
