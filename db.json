@@ -1,0 +1,16 @@
+{
+  "restaurants": [
+    {
+      "name": "Amir",
+      "email": "yunweneric@yahoo..com",
+      "address": "Loum",
+      "id": 10
+    },
+    {
+      "name": "Brandone",
+      "email": "yunweneric@gmail.com",
+      "address": "Bali, 4550",
+      "id": 13
+    }
+  ]
+}
